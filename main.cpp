@@ -1,61 +1,66 @@
 #include <iostream>
 using namespace std;
 
-class LLData {
-private:
-    int data;
-    LLData *next;
-    LLData() {}
+
+template <typename T> class tempLLData
+{
+    T data; 
+    tempLLData* next;
+    tempLLData() {}
+
 public:
-    LLData(int d, LLData *nxt) {
+    tempLLData(T d, tempLLData *nxt) {
         data = d;
         next = nxt;
     }
-    int getData() { return data; }
-    LLData* getNext() { return next; }
-    void setData(int d) { data = d; }
-    void setNext(LLData* nxt) { next = nxt; }
-};
-class LinkedList {
-private:
-    LLData* first;
-public:
-    LinkedList() { first = NULL; }
-    LLData *getFirst() { return first; }
-    void addItem(int d) {
-        first = new LLData(d,first);
-    }
-    void showList() {
-        LLData *curr = getFirst();
-        while (curr != NULL) {
-            cout << curr->getData() << " -> ";
-            curr = curr->getNext();
-        }
-        cout << endl;
-    }
-    void addItemAtEnd(int d) {
-        if (first == NULL) {
-            first = new LLData(d,first);
-        }
-        else {
-            LLData* curr = first;
-            while (curr->getNext() != NULL) {
-                curr = curr->getNext();
-            }
-            curr->setNext(new LLData(d,curr->getNext()));
-        }
-    }
+    T getData() { return data; }
+    tempLLData* getNext() { return next; }
+    void setData(T d) { data = d; }
+    void setNext(tempLLData* nxt) { next = nxt; }
+
 };
 
+template <typename T> class tempLinkedList{
+    private:
+        tempLLData<T>* first;
+    public:
+        tempLinkedList() { first = NULL; }
+        tempLLData<T> *getFirst() { return first; }
+        void addItem(T d) {
+            first = new tempLLData<T>(d,first);
+        } 
+        void showList() {
+            tempLLData<T> *curr = getFirst();
+            while (curr != NULL) {
+                cout << curr->getData() << " -> ";
+                curr = curr->getNext();
+            }
+            cout << endl;
+        }
+        void addItemAtEnd(T d) {
+            if (first == NULL) {
+                first = new tempLLData<T>(d,first);
+            }
+            else {
+                tempLLData<T>* curr = first;
+                while (curr->getNext() != NULL) {
+                    curr = curr->getNext();
+                }
+                curr->setNext(new tempLLData<T>(d,curr->getNext()));
+            }
+        }
+
+};
+
+
+
+
 int main() {
-    LinkedList myList;
-    myList.addItem(1);
-    myList.addItemAtEnd(2);
-    myList.addItem(3);
-    myList.addItemAtEnd(4);
-    myList.showList();
-    myList.addItem(5);
-    myList.addItemAtEnd(6);
+    tempLinkedList<string> myList;
+    myList.addItem("hi");
+    myList.addItemAtEnd("hello");
+    myList.addItem("ahhh");
+
     myList.showList();
     return 0;
 }
