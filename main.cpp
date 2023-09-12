@@ -1,8 +1,3 @@
-# CS2_HW2
-
-## Introduction
-I wrote some simple code for a Linked List of integers, shown here (including some simple testing).
-
 #include <iostream>
 using namespace std;
 
@@ -64,8 +59,3 @@ int main() {
     myList.showList();
     return 0;
 }
-
-But I would like to have this code do other types of Linked Lists without having to implement multiple classes.  But I am having problems doing so.  So, I want you to re-implement the two classes to be two template classes.  Then I want you to do the testing of the class that is there for integers, but then make a copy of the testing and set it up to test for a Linked List of string values.
-
-## What to Submit
-Once you have completed your program submit your code via the canvas interface as a single file. Make sure that you include the names and ID#s of all of the people in your group.
