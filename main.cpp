@@ -2,35 +2,35 @@
 using namespace std;
 
 
-template <typename T> class tempLLData
+template <typename T> class LLData
 {
     T data; 
-    tempLLData* next;
-    tempLLData() {}
+    LLData* next;
+    LLData() {}
 
 public:
-    tempLLData(T d, tempLLData *nxt) {
+    LLData(T d, LLData *nxt) {
         data = d;
         next = nxt;
     }
     T getData() { return data; }
-    tempLLData* getNext() { return next; }
+    LLData* getNext() { return next; }
     void setData(T d) { data = d; }
-    void setNext(tempLLData* nxt) { next = nxt; }
+    void setNext(LLData* nxt) { next = nxt; }
 
 };
 
-template <typename T> class tempLinkedList{
+template <typename T> class LinkedList{
     private:
-        tempLLData<T>* first;
+        LLData<T>* first;
     public:
-        tempLinkedList() { first = NULL; }
-        tempLLData<T> *getFirst() { return first; }
+        LinkedList() { first = NULL; }
+        LLData<T> *getFirst() { return first; }
         void addItem(T d) {
-            first = new tempLLData<T>(d,first);
+            first = new LLData<T>(d,first);
         } 
         void showList() {
-            tempLLData<T> *curr = getFirst();
+            LLData<T> *curr = getFirst();
             while (curr != NULL) {
                 cout << curr->getData() << " -> ";
                 curr = curr->getNext();
@@ -39,14 +39,14 @@ template <typename T> class tempLinkedList{
         }
         void addItemAtEnd(T d) {
             if (first == NULL) {
-                first = new tempLLData<T>(d,first);
+                first = new LLData<T>(d,first);
             }
             else {
-                tempLLData<T>* curr = first;
+                LLData<T>* curr = first;
                 while (curr->getNext() != NULL) {
                     curr = curr->getNext();
                 }
-                curr->setNext(new tempLLData<T>(d,curr->getNext()));
+                curr->setNext(new LLData<T>(d,curr->getNext()));
             }
         }
 
@@ -56,7 +56,7 @@ template <typename T> class tempLinkedList{
 
 
 int main() {
-    tempLinkedList<string> myList;
+    LinkedList<string> myList;
     myList.addItem("hi");
     myList.addItemAtEnd("hello");
     myList.addItem("ahhh");
